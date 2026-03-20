@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services — Sehhat Foundation</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .services-hero-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-top: 50px; }
+    .svc-card-big { border-radius: 24px; overflow: hidden; border: 1px solid var(--border); transition: all 0.3s; background: white; }
+    .svc-card-big:hover { transform: translateY(-6px); box-shadow: 0 16px 50px rgba(46,125,50,0.14); }
+    .svc-header { padding: 36px 36px 28px; background: linear-gradient(135deg, var(--green-pale), #f0f9f1); position: relative; }
+    .svc-header-icon { font-size: 52px; margin-bottom: 14px; display: block; }
+    .svc-header h2 { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--green-dark); font-weight: 700; margin-bottom: 4px; }
+    .svc-header .svc-urdu { font-size: 16px; color: var(--text-gray); direction: rtl; }
+    .svc-body { padding: 28px 36px 36px; }
+    .svc-body p { font-size: 14px; color: var(--text-gray); line-height: 1.75; margin-bottom: 22px; }
+    .svc-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .svc-list li { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text-dark); }
+    .svc-list li::before { content: '✓'; color: var(--green-mid); font-weight: 800; font-size: 14px; }
+    .svc-tag { display: inline-block; background: var(--green-pale); color: var(--green-mid); font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 10px; margin-right: 6px; margin-bottom: 6px; }
+
+    .process-section { background: var(--green-xpale); }
+    .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 48px; position: relative; }
+    .process-steps::before { content: ''; position: absolute; top: 30px; left: 14%; right: 14%; height: 2px; background: linear-gradient(90deg, var(--green-light), var(--green-mid)); }
+    .process-step { text-align: center; position: relative; }
+    .step-num { width: 56px; height: 56px; background: var(--green-mid); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: white; margin: 0 auto 16px; box-shadow: 0 4px 16px rgba(46,125,50,0.3); position: relative; z-index: 1; }
+    .step-title { font-size: 15px; font-weight: 700; color: var(--green-dark); margin-bottom: 6px; }
+    .step-desc { font-size: 12px; color: var(--text-gray); line-height: 1.6; }
+
+    .faq-section { background: white; }
+    .faq-list { margin-top: 40px; display: flex; flex-direction: column; gap: 14px; max-width: 800px; }
+    .faq-item { border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+    .faq-question { padding: 18px 22px; font-weight: 700; font-size: 15px; color: var(--green-dark); cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; }
+    .faq-question:hover { background: var(--green-pale); }
+    .faq-question .faq-arrow { font-size: 18px; transition: transform 0.3s; }
+    .faq-answer { padding: 0 22px; max-height: 0; overflow: hidden; transition: max-height 0.3s, padding 0.3s; font-size: 14px; color: var(--text-gray); line-height: 1.7; }
+    .faq-item.open .faq-answer { max-height: 200px; padding: 0 22px 18px; }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+
+    @media(max-width:960px){.services-hero-grid,.process-steps{grid-template-columns:1fr;}.process-steps::before{display:none;}}
+  </style>
+</head>
+<body>
+  <div class="lang-bar">
+    <div class="lang-bar-left en-text">📞 Emergency: +92-340-0114153 &nbsp;|&nbsp; ✉️ info@sehhatfoundation.org.pk</div>
+    <div class="lang-bar-left ur-text">📞 ہنگامی: 340-0114153-92+</div>
+    <div class="lang-bar-right"><button class="lang-btn" data-lang="en" onclick="setLang('en')">English</button><button class="lang-btn" data-lang="ur" onclick="setLang('ur')">اردو</button></div>
+  </div>
+  <nav>
+    <a href="index.html" class="logo-area"><div class="logo-icon">🏥</div><div class="logo-text"><div class="main">Sehhat Foundation</div><div class="sub">Gilgit-Baltistan · Since 2005</div></div></a>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html" class="en-text">Home</a><a href="index.html" class="ur-text">ہوم</a>
+      <a href="about.html" class="en-text">About Us</a><a href="about.html" class="ur-text">ہمارے بارے میں</a>
+      <a href="services.html" class="en-text">Services</a><a href="services.html" class="ur-text">خدمات</a>
+      <a href="hospital.html" class="en-text">Hospital</a><a href="hospital.html" class="ur-text">ہسپتال</a>
+      <a href="gallery.html" class="en-text">Gallery</a><a href="gallery.html" class="ur-text">گیلری</a>
+      <a href="contact.html" class="en-text">Contact</a><a href="contact.html" class="ur-text">رابطہ</a>
+      <a href="donate.html" class="nav-donate en-text">❤️ Donate</a><a href="donate.html" class="nav-donate ur-text">❤️ عطیہ</a>
+    </div>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-hero-content fade-up">
+      <div class="page-hero-badge">🏥 <span class="en-text">What We Offer</span><span class="ur-text">ہم کیا فراہم کرتے ہیں</span></div>
+      <h1 class="en-text">Our <span>Healthcare Services</span></h1>
+      <h1 class="ur-text">ہماری <span>صحت خدمات</span></h1>
+      <p class="en-text">Comprehensive healthcare programs designed to reach every corner of Gilgit-Baltistan — from primary care to specialized training.</p>
+      <p class="ur-text">گلگت بلتستان کے ہر کونے تک پہنچنے کے لیے جامع صحت پروگرام — بنیادی دیکھ بھال سے لے کر خصوصی تربیت تک۔</p>
+    </div>
+  </div>
+
+  <!-- Services Grid -->
+  <section style="background:white;">
+    <div class="container">
+      <div class="section-tag en-text">Core Services</div>
+      <div class="section-tag ur-text">بنیادی خدمات</div>
+      <h2 class="section-title en-text">4 Programs, One Mission</h2>
+      <h2 class="section-title ur-text">4 پروگرام، ایک مشن</h2>
+      <div class="services-hero-grid">
+
+        <div class="svc-card-big reveal">
+          <div class="svc-header">
+            <span class="svc-header-icon">🏥</span>
+            <h2 class="en-text">General Health</h2><h2 class="ur-text">عمومی صحت</h2>
+            <div class="svc-urdu en-text">عمومی صحت کی خدمات</div>
+          </div>
+          <div class="svc-body">
+            <p class="en-text">Our General Health program provides comprehensive primary healthcare services to all residents of Gilgit-Baltistan. Through our Danyor Hospital and outreach camps, we offer diagnostics, consultations, and treatment for a wide range of conditions.</p>
+            <p class="ur-text" style="direction:rtl;">ہمارا عمومی صحت پروگرام گلگت بلتستان کے تمام باشندوں کو بنیادی صحت خدمات فراہم کرتا ہے۔ دانیور ہسپتال اور آؤٹ ریچ کیمپ کے ذریعے ہم تشخیص، مشاورت اور علاج فراہم کرتے ہیں۔</p>
+            <ul class="svc-list">
+              <li class="en-text">OPD consultations with qualified doctors</li>
+              <li class="en-text">Laboratory diagnostics and blood tests</li>
+              <li class="en-text">Free medical camps in remote villages</li>
+              <li class="en-text">Emergency treatment services</li>
+              <li class="en-text">Pharmacy with essential medicines</li>
+              <li class="ur-text" style="direction:rtl;">اہل ڈاکٹروں سے او پی ڈی مشاورت</li>
+              <li class="ur-text" style="direction:rtl;">لیبارٹری تشخیص اور خون کے ٹیسٹ</li>
+              <li class="ur-text" style="direction:rtl;">دور دراز گاؤوں میں مفت طبی کیمپ</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="svc-card-big reveal">
+          <div class="svc-header">
+            <span class="svc-header-icon">👶</span>
+            <h2 class="en-text">Maternal & Child Health</h2><h2 class="ur-text">زچہ بچہ صحت</h2>
+            <div class="svc-urdu en-text">ماں اور بچے کی صحت</div>
+          </div>
+          <div class="svc-body">
+            <p class="en-text">Our Maternal and Child Health program focuses on reducing maternal and infant mortality in GB. We provide comprehensive care from pregnancy through early childhood, ensuring safe deliveries and healthy development.</p>
+            <p class="ur-text" style="direction:rtl;">ہمارا زچہ بچہ صحت پروگرام گلگت بلتستان میں زچگی اور بچوں کی اموات کم کرنے پر مرکوز ہے۔ ہم حمل سے ابتدائی بچپن تک جامع دیکھ بھال فراہم کرتے ہیں۔</p>
+            <ul class="svc-list">
+              <li class="en-text">Antenatal care and pregnancy monitoring</li>
+              <li class="en-text">Safe delivery services (normal & C-section)</li>
+              <li class="en-text">Postnatal care for mother and baby</li>
+              <li class="en-text">Child immunization and growth monitoring</li>
+              <li class="en-text">Nutrition counseling for mothers</li>
+              <li class="ur-text" style="direction:rtl;">حمل کے دوران دیکھ بھال</li>
+              <li class="ur-text" style="direction:rtl;">محفوظ ولادت خدمات</li>
+              <li class="ur-text" style="direction:rtl;">بچوں کی ویکسینیشن اور نشوونما</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="svc-card-big reveal">
+          <div class="svc-header">
+            <span class="svc-header-icon">📚</span>
+            <h2 class="en-text">Health Education</h2><h2 class="ur-text">صحت تعلیم</h2>
+            <div class="svc-urdu en-text">صحت بارے تعلیم اور آگاہی</div>
+          </div>
+          <div class="svc-body">
+            <p class="en-text">Prevention is better than cure. Our Health Education program raises awareness in communities about hygiene, nutrition, disease prevention, and healthy lifestyle practices — empowering communities to take control of their own health.</p>
+            <p class="ur-text" style="direction:rtl;">علاج سے بہتر احتیاط ہے۔ ہمارا صحت تعلیم پروگرام کمیونٹی میں صفائی، غذائیت، بیماری سے بچاؤ اور صحتمند طرز زندگی کے بارے میں آگاہی پھیلاتا ہے۔</p>
+            <ul class="svc-list">
+              <li class="en-text">Village-level health awareness sessions</li>
+              <li class="en-text">Hygiene and sanitation workshops</li>
+              <li class="en-text">Nutrition and healthy diet guidance</li>
+              <li class="en-text">Disease prevention training</li>
+              <li class="en-text">School health programs for children</li>
+              <li class="ur-text" style="direction:rtl;">گاؤں سطح پر صحت آگاہی سیشن</li>
+              <li class="ur-text" style="direction:rtl;">صفائی اور صحت کے ورکشاپ</li>
+              <li class="ur-text" style="direction:rtl;">بچوں کے لیے اسکول صحت پروگرام</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="svc-card-big reveal">
+          <div class="svc-header">
+            <span class="svc-header-icon">💉</span>
+            <h2 class="en-text">Nursing Training</h2><h2 class="ur-text">نرسنگ تربیت</h2>
+            <div class="svc-urdu en-text">پیشہ ورانہ نرسنگ تربیت</div>
+          </div>
+          <div class="svc-body">
+            <p class="en-text">To build sustainable healthcare capacity in GB, we train local nurses and healthcare workers. This program creates a skilled local workforce that can provide quality care within their own communities for years to come.</p>
+            <p class="ur-text" style="direction:rtl;">گلگت بلتستان میں پائیدار صحت صلاحیت بنانے کے لیے ہم مقامی نرسوں اور صحت کارکنوں کو تربیت دیتے ہیں۔ یہ پروگرام ایک ہنرمند مقامی افرادی قوت بناتا ہے۔</p>
+            <ul class="svc-list">
+              <li class="en-text">Certified nursing assistant training</li>
+              <li class="en-text">Midwifery skills development</li>
+              <li class="en-text">First aid and emergency response</li>
+              <li class="en-text">Community health worker certification</li>
+              <li class="en-text">Ongoing professional development</li>
+              <li class="ur-text" style="direction:rtl;">سرٹیفائیڈ نرسنگ اسسٹنٹ تربیت</li>
+              <li class="ur-text" style="direction:rtl;">دائی مہارت کی ترقی</li>
+              <li class="ur-text" style="direction:rtl;">ابتدائی طبی امداد اور ہنگامی ردعمل</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="process-section">
+    <div class="container">
+      <div class="section-tag en-text">How It Works</div>
+      <div class="section-tag ur-text">یہ کیسے کام کرتا ہے</div>
+      <h2 class="section-title en-text">Getting Care at Sehhat Foundation</h2>
+      <h2 class="section-title ur-text">سہت فاؤنڈیشن میں علاج کیسے حاصل کریں</h2>
+      <div class="process-steps">
+        <div class="process-step reveal"><div class="step-num">1</div><div class="step-title en-text">Register / Walk In</div><div class="step-title ur-text">رجسٹریشن</div><div class="step-desc en-text">Visit Danyor Hospital or attend one of our community health camps — no prior appointment needed.</div><div class="step-desc ur-text" style="direction:rtl;">دانیور ہسپتال آئیں یا کمیونٹی کیمپ میں شرکت کریں۔</div></div>
+        <div class="process-step reveal"><div class="step-num">2</div><div class="step-title en-text">Consultation</div><div class="step-title ur-text">مشاورت</div><div class="step-desc en-text">Meet with our qualified doctors who will assess your condition and recommend treatment.</div><div class="step-desc ur-text" style="direction:rtl;">اہل ڈاکٹر سے ملیں جو آپ کی حالت کا جائزہ لیں گے۔</div></div>
+        <div class="process-step reveal"><div class="step-num">3</div><div class="step-title en-text">Diagnosis</div><div class="step-title ur-text">تشخیص</div><div class="step-desc en-text">Laboratory tests and diagnostics are available on-site to support accurate diagnosis.</div><div class="step-desc ur-text" style="direction:rtl;">درست تشخیص کے لیے لیبارٹری ٹیسٹ دستیاب ہیں۔</div></div>
+        <div class="process-step reveal"><div class="step-num">4</div><div class="step-title en-text">Treatment & Care</div><div class="step-title ur-text">علاج و دیکھ بھال</div><div class="step-desc en-text">Receive treatment, medicines, and follow-up care from our dedicated healthcare team.</div><div class="step-desc ur-text" style="direction:rtl;">علاج، ادویات اور فالو اپ دیکھ بھال حاصل کریں۔</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-tag en-text">FAQ</div>
+      <div class="section-tag ur-text">عام سوالات</div>
+      <h2 class="section-title en-text">Frequently Asked Questions</h2>
+      <h2 class="section-title ur-text">اکثر پوچھے جانے والے سوالات</h2>
+      <div class="faq-list">
+        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span class="en-text">Are services at Sehhat Foundation free?</span><span class="ur-text">کیا سہت فاؤنڈیشن کی خدمات مفت ہیں؟</span><span class="faq-arrow">▼</span></div><div class="faq-answer en-text">Many of our services are provided free or at a very subsidized cost to those who cannot afford them. We believe no one should be denied healthcare due to financial reasons.</div><div class="faq-answer ur-text" style="direction:rtl;">ہماری بہت سی خدمات مفت یا بہت کم قیمت پر فراہم کی جاتی ہیں۔ ہم سمجھتے ہیں کہ مالی وجوہات کی بنا پر کسی کو صحت سے محروم نہیں رکھا جانا چاہیے۔</div></div>
+        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span class="en-text">Where is Danyor Hospital located?</span><span class="ur-text">دانیور ہسپتال کہاں ہے؟</span><span class="faq-arrow">▼</span></div><div class="faq-answer en-text">Our hospital is located near the Chinese Graveyard on Shahrah-e-Karakoram in Danyor, Gilgit. It is easily accessible from Gilgit city, Hunza-Nagar, Sakwar, and Jaglot.</div><div class="faq-answer ur-text" style="direction:rtl;">ہمارا ہسپتال دانیور، گلگت میں شاہراہ قراقرم پر چائنہ قبرستان کے قریب واقع ہے۔ گلگت، ہنزہ نگر، سکور اور جگلوٹ سے آسانی سے پہنچا جا سکتا ہے۔</div></div>
+        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span class="en-text">How can I volunteer with Sehhat Foundation?</span><span class="ur-text">میں سہت فاؤنڈیشن کے ساتھ رضاکار کیسے بن سکتا ہوں؟</span><span class="faq-arrow">▼</span></div><div class="faq-answer en-text">We welcome volunteers — doctors, nurses, educators, and community workers. Please visit our Contact page to fill in the volunteer registration form or call us directly.</div><div class="faq-answer ur-text" style="direction:rtl;">ہم رضاکاروں کا خیرمقدم کرتے ہیں۔ رابطہ صفحہ پر جائیں یا ہمیں براہ راست کال کریں۔</div></div>
+        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span class="en-text">Does the foundation accept donations?</span><span class="ur-text">کیا فاؤنڈیشن عطیات قبول کرتی ہے؟</span><span class="faq-arrow">▼</span></div><div class="faq-answer en-text">Yes! We accept donations via JazzCash, EasyPaisa, bank transfer, and international transfers. Every rupee goes directly toward healthcare services for the people of GB.</div><div class="faq-answer ur-text" style="direction:rtl;">جی ہاں! ہم جاز کیش، ایزی پیسہ، بینک ٹرانسفر اور بین الاقوامی ٹرانسفر کے ذریعے عطیات قبول کرتے ہیں۔</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="logo-area" style="display:flex;margin-bottom:16px;"><div class="logo-icon">🏥</div><div class="logo-text"><div class="main">Sehhat Foundation</div><div class="sub">Since 2005 · Gilgit-Baltistan</div></div></a><p class="en-text">A registered NGO dedicated to quality healthcare in Gilgit-Baltistan.</p><p class="ur-text">گلگت بلتستان میں معیاری صحت کے لیے وقف این جی او۔</p><div class="footer-social"><a href="#" class="social-btn">📘</a><a href="#" class="social-btn">💬</a><a href="#" class="social-btn">📺</a><a href="#" class="social-btn">📷</a></div></div>
+      <div><h4 class="en-text">Quick Links</h4><h4 class="ur-text">فوری لنکس</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="hospital.html">Hospital</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="donate.html">Donate</a></li></ul></div>
+      <div><h4 class="en-text">Services</h4><h4 class="ur-text">خدمات</h4><ul><li><a href="#">General Health</a></li><li><a href="#">Maternal & Child</a></li><li><a href="#">Health Education</a></li><li><a href="#">Nursing Training</a></li></ul></div>
+      <div><h4 class="en-text">Contact</h4><h4 class="ur-text">رابطہ</h4><div class="footer-contact-item"><span class="icon">📍</span><span>Danyor, Gilgit-Baltistan</span></div><div class="footer-contact-item"><span class="icon">📞</span><span>+92-340-0114153</span></div><div class="footer-contact-item"><span class="icon">✉️</span><span>info@sehhatfoundation.org.pk</span></div></div>
+    </div>
+    <div class="footer-bottom"><span class="en-text">© 2025 Sehhat Foundation Society · All Rights Reserved</span><span class="ur-text">© 2025 سہت فاؤنڈیشن سوسائٹی</span></div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    function toggleFaq(el) {
+      const item = el.parentElement;
+      item.classList.toggle('open');
+    }
+  </script>
+</body>
+</html>

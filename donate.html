@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donate — Sehhat Foundation</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .donate-hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .donate-card { background: white; border-radius: 28px; padding: 40px; }
+    .donate-card h3 { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--green-dark); margin-bottom: 8px; }
+    .donate-card p { font-size: 14px; color: var(--text-gray); line-height: 1.7; margin-bottom: 26px; }
+    .amount-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 18px; }
+    .donate-amount { background: var(--green-pale); border: 2px solid transparent; color: var(--green-dark); padding: 14px 10px; border-radius: 14px; font-weight: 800; font-size: 15px; cursor: pointer; text-align: center; transition: all 0.2s; font-family: 'Nunito', sans-serif; }
+    .donate-amount:hover, .donate-amount.selected { background: var(--green-mid); color: white; border-color: var(--green-mid); transform: scale(1.04); }
+    .custom-amount { width: 100%; padding: 13px 16px; border: 2px solid var(--border); border-radius: 12px; font-size: 15px; font-family: 'Nunito', sans-serif; font-weight: 700; color: var(--text-dark); outline: none; transition: border-color 0.2s; margin-bottom: 20px; }
+    .custom-amount:focus { border-color: var(--green-mid); }
+    .payment-methods { display: flex; flex-direction: column; gap: 12px; }
+    .pay-btn { display: flex; align-items: center; gap: 14px; padding: 16px 20px; border: 1.5px solid var(--border); border-radius: 14px; cursor: pointer; transition: all 0.2s; background: white; font-family: 'Nunito', sans-serif; width: 100%; }
+    .pay-btn:hover { border-color: var(--green-mid); background: var(--green-xpale); transform: translateX(4px); }
+    .pay-btn .pay-icon { font-size: 28px; }
+    .pay-btn .pay-name { font-weight: 800; font-size: 15px; color: var(--green-dark); }
+    .pay-btn .pay-detail { font-size: 12px; color: var(--text-gray); }
+    .pay-divider { text-align: center; color: var(--text-gray); font-size: 12px; font-weight: 700; margin: 4px 0; letter-spacing: 1px; }
+
+    .bank-info { background: var(--green-xpale); border-radius: 24px; padding: 32px; margin-top: 24px; }
+    .bank-info h3 { font-size: 18px; font-weight: 700; color: var(--green-dark); margin-bottom: 18px; }
+    .bank-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #d4e8d6; font-size: 14px; }
+    .bank-row:last-child { border-bottom: none; }
+    .bank-row .label { color: var(--text-gray); font-weight: 600; }
+    .bank-row .value { font-weight: 700; color: var(--green-dark); }
+
+    .impact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+    .impact-card { background: var(--green-pale); border-radius: 20px; padding: 28px 24px; text-align: center; }
+    .impact-amount { font-family: 'Playfair Display', serif; font-size: 32px; color: var(--green-mid); font-weight: 700; margin-bottom: 8px; }
+    .impact-desc { font-size: 14px; color: var(--text-gray); line-height: 1.6; }
+
+    .trust-section { background: var(--green-dark); }
+    .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 40px; }
+    .trust-item { text-align: center; padding: 24px 16px; background: rgba(255,255,255,0.06); border-radius: 18px; border: 1px solid rgba(255,255,255,0.1); }
+    .trust-icon { font-size: 32px; margin-bottom: 10px; }
+    .trust-item h4 { color: white; font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+    .trust-item p { color: rgba(255,255,255,0.6); font-size: 12px; line-height: 1.5; }
+
+    .side-info { display: flex; flex-direction: column; gap: 20px; }
+    .side-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 26px; }
+    .side-card h4 { color: white; font-size: 16px; font-weight: 700; margin-bottom: 12px; }
+    .side-card p { color: rgba(255,255,255,0.75); font-size: 13px; line-height: 1.7; }
+    .side-stat { font-family: 'Playfair Display', serif; font-size: 36px; color: #f9a825; font-weight: 700; margin-bottom: 4px; }
+
+    @media(max-width:960px){.donate-hero-inner,.impact-grid,.trust-grid{grid-template-columns:1fr;}.amount-grid{grid-template-columns:repeat(2,1fr);}}
+  </style>
+</head>
+<body>
+  <div class="lang-bar">
+    <div class="lang-bar-left en-text">📞 Emergency: +92-340-0114153 &nbsp;|&nbsp; ✉️ info@sehhatfoundation.org.pk</div>
+    <div class="lang-bar-left ur-text">📞 ہنگامی: 340-0114153-92+</div>
+    <div class="lang-bar-right"><button class="lang-btn" data-lang="en" onclick="setLang('en')">English</button><button class="lang-btn" data-lang="ur" onclick="setLang('ur')">اردو</button></div>
+  </div>
+  <nav>
+    <a href="index.html" class="logo-area"><div class="logo-icon">🏥</div><div class="logo-text"><div class="main">Sehhat Foundation</div><div class="sub">Gilgit-Baltistan · Since 2005</div></div></a>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html" class="en-text">Home</a><a href="index.html" class="ur-text">ہوم</a>
+      <a href="about.html" class="en-text">About Us</a><a href="about.html" class="ur-text">ہمارے بارے میں</a>
+      <a href="services.html" class="en-text">Services</a><a href="services.html" class="ur-text">خدمات</a>
+      <a href="hospital.html" class="en-text">Hospital</a><a href="hospital.html" class="ur-text">ہسپتال</a>
+      <a href="gallery.html" class="en-text">Gallery</a><a href="gallery.html" class="ur-text">گیلری</a>
+      <a href="contact.html" class="en-text">Contact</a><a href="contact.html" class="ur-text">رابطہ</a>
+      <a href="donate.html" class="nav-donate en-text">❤️ Donate</a><a href="donate.html" class="nav-donate ur-text">❤️ عطیہ</a>
+    </div>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </nav>
+
+  <!-- Hero -->
+  <section style="background:linear-gradient(135deg,#1a5c2a 0%,#2d6a35 60%,#1a4a22 100%);padding:70px 40px;">
+    <div class="container donate-hero-inner">
+      <div>
+        <div class="page-hero-badge" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#a5d6a7;padding:5px 14px;border-radius:20px;font-size:12px;margin-bottom:20px;">❤️ <span class="en-text">Make a Difference Today</span><span class="ur-text">آج فرق ڈالیں</span></div>
+        <h1 style="font-family:'Playfair Display',serif;font-size:clamp(34px,5vw,58px);color:white;line-height:1.15;font-weight:900;margin-bottom:14px;" class="en-text">Donate to <span style="color:#f9a825;">Sehhat Foundation</span></h1>
+        <h1 style="font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,48px);color:white;line-height:1.2;font-weight:900;margin-bottom:14px;direction:rtl;" class="ur-text">سہت فاؤنڈیشن کو <span style="color:#f9a825;">عطیہ کریں</span></h1>
+        <p style="color:rgba(255,255,255,0.82);font-size:17px;line-height:1.75;margin-bottom:28px;" class="en-text">Your donation provides free healthcare to the most vulnerable communities in Gilgit-Baltistan. Every rupee goes directly to patient care.</p>
+        <p style="color:rgba(255,255,255,0.82);font-size:17px;line-height:1.75;margin-bottom:28px;direction:rtl;" class="ur-text">آپ کا عطیہ گلگت بلتستان کی سب سے کمزور کمیونٹیوں کو مفت صحت خدمات فراہم کرتا ہے۔ ہر روپیہ براہ راست مریضوں کی دیکھ بھال میں جاتا ہے۔</p>
+        <div class="side-info">
+          <div class="side-card"><div class="side-stat">50K+</div><h4 class="en-text">Lives Impacted</h4><h4 class="ur-text" style="direction:rtl;">متاثرہ زندگیاں</h4><p class="en-text">Over 50,000 patients have received care from Sehhat Foundation since 2005.</p><p class="ur-text" style="direction:rtl;">2005 سے 50,000 سے زیادہ مریض سہت فاؤنڈیشن سے علاج پا چکے ہیں۔</p></div>
+          <div class="side-card"><div style="font-size:20px;margin-bottom:8px;">🔒</div><h4 class="en-text">100% Transparent</h4><h4 class="ur-text" style="direction:rtl;">100% شفاف</h4><p class="en-text">We are a registered NGO. All donations are used directly for healthcare services with full transparency.</p><p class="ur-text" style="direction:rtl;">ہم رجسٹرڈ این جی او ہیں۔ تمام عطیات براہ راست صحت خدمات میں استعمال ہوتے ہیں۔</p></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="donate-card">
+          <h3 class="en-text">Make a Donation</h3>
+          <h3 class="ur-text" style="direction:rtl;">عطیہ کریں</h3>
+          <p class="en-text">Select an amount or enter a custom amount below:</p>
+          <p class="ur-text" style="direction:rtl;">رقم منتخب کریں یا نیچے اپنی رقم درج کریں:</p>
+
+          <div class="amount-grid">
+            <button class="donate-amount" onclick="selectAmount(this,'500')">PKR 500</button>
+            <button class="donate-amount selected" onclick="selectAmount(this,'1000')">PKR 1,000</button>
+            <button class="donate-amount" onclick="selectAmount(this,'2500')">PKR 2,500</button>
+            <button class="donate-amount" onclick="selectAmount(this,'5000')">PKR 5,000</button>
+            <button class="donate-amount" onclick="selectAmount(this,'10000')">PKR 10,000</button>
+            <button class="donate-amount" onclick="selectAmount(this,'25000')">PKR 25,000</button>
+          </div>
+          <input type="number" class="custom-amount" id="custom-amount" placeholder="Or enter custom amount (PKR)" min="1">
+
+          <div class="payment-methods">
+            <div class="pay-divider en-text">— CHOOSE PAYMENT METHOD —</div>
+            <div class="pay-divider ur-text" style="direction:rtl;">— ادائیگی کا طریقہ منتخب کریں —</div>
+
+            <button class="pay-btn" onclick="handleDonate('JazzCash')">
+              <span class="pay-icon">📱</span>
+              <div><div class="pay-name">JazzCash</div><div class="pay-detail en-text">Send to: 0340-0114153 (Sehhat Foundation)</div><div class="pay-detail ur-text" style="direction:rtl;">بھیجیں: 0340-0114153</div></div>
+            </button>
+            <button class="pay-btn" onclick="handleDonate('EasyPaisa')">
+              <span class="pay-icon">💚</span>
+              <div><div class="pay-name">EasyPaisa</div><div class="pay-detail en-text">Send to: 0340-0114153 (Sehhat Foundation)</div><div class="pay-detail ur-text" style="direction:rtl;">بھیجیں: 0340-0114153</div></div>
+            </button>
+            <button class="pay-btn" onclick="handleDonate('Bank Transfer')">
+              <span class="pay-icon">🏦</span>
+              <div><div class="pay-name en-text">Bank Transfer</div><div class="pay-name ur-text" style="direction:rtl;">بینک ٹرانسفر</div><div class="pay-detail en-text">MCB / HBL — See details below</div><div class="pay-detail ur-text" style="direction:rtl;">MCB / HBL — نیچے تفصیل دیکھیں</div></div>
+            </button>
+          </div>
+          <div id="donate-confirm" style="display:none;background:var(--green-pale);border:1px solid var(--green-light);border-radius:12px;padding:16px;margin-top:16px;font-size:14px;color:var(--green-dark);font-weight:600;text-align:center;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact -->
+  <section style="background:white;">
+    <div class="container">
+      <div class="section-tag en-text">Your Impact</div>
+      <div class="section-tag ur-text">آپ کا اثر</div>
+      <h2 class="section-title en-text">What Your Donation Can Do</h2>
+      <h2 class="section-title ur-text">آپ کا عطیہ کیا کر سکتا ہے</h2>
+      <div class="impact-grid">
+        <div class="impact-card reveal"><div class="impact-amount">PKR 500</div><div class="impact-desc en-text">Provides basic medicines for one patient visit at Danyor Hospital</div><div class="impact-desc ur-text" style="direction:rtl;">ایک مریض کے دورے کے لیے بنیادی دوائیں فراہم کرتا ہے</div></div>
+        <div class="impact-card reveal"><div class="impact-amount">PKR 1,000</div><div class="impact-desc en-text">Covers a full OPD consultation including diagnosis for one patient</div><div class="impact-desc ur-text" style="direction:rtl;">ایک مریض کے لیے مکمل او پی ڈی مشاورت اور تشخیص</div></div>
+        <div class="impact-card reveal"><div class="impact-amount">PKR 2,500</div><div class="impact-desc en-text">Funds a child's complete immunization and health check program</div><div class="impact-desc ur-text" style="direction:rtl;">ایک بچے کا مکمل ویکسینیشن اور صحت جانچ پروگرام</div></div>
+        <div class="impact-card reveal"><div class="impact-amount">PKR 5,000</div><div class="impact-desc en-text">Supports prenatal care for one expectant mother through her pregnancy</div><div class="impact-desc ur-text" style="direction:rtl;">ایک حاملہ ماں کی پوری حمل کے دوران دیکھ بھال</div></div>
+        <div class="impact-card reveal"><div class="impact-amount">PKR 10,000</div><div class="impact-desc en-text">Sponsors a community health awareness camp reaching 50+ families</div><div class="impact-desc ur-text" style="direction:rtl;">50 سے زیادہ خاندانوں تک پہنچنے والا کمیونٹی صحت آگاہی کیمپ</div></div>
+        <div class="impact-card reveal"><div class="impact-amount">PKR 25,000</div><div class="impact-desc en-text">Funds a full week of free healthcare services in a remote GB village</div><div class="impact-desc ur-text" style="direction:rtl;">گلگت بلتستان کے دور دراز گاؤں میں ایک ہفتے کی مفت صحت خدمات</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bank Details -->
+  <section style="background:var(--green-xpale);">
+    <div class="container" style="max-width:800px;">
+      <div class="section-tag en-text">Bank Details</div>
+      <div class="section-tag ur-text">بینک تفصیل</div>
+      <h2 class="section-title en-text">Bank Account Details</h2>
+      <h2 class="section-title ur-text">بینک اکاؤنٹ کی تفصیل</h2>
+      <p class="section-desc en-text" style="margin-bottom:30px;">Transfer directly to our registered NGO bank accounts. Please send proof of payment to donate@sehhatfoundation.org.pk</p>
+      <p class="section-desc ur-text" style="margin-bottom:30px;direction:rtl;">ہمارے رجسٹرڈ این جی او بینک اکاؤنٹ میں براہ راست ٹرانسفر کریں۔ ادائیگی کا ثبوت ای میل کریں۔</p>
+      <div class="bank-info reveal">
+        <h3 class="en-text">🏦 MCB Bank — Primary Account</h3>
+        <h3 class="ur-text" style="direction:rtl;">🏦 ایم سی بی بینک — بنیادی اکاؤنٹ</h3>
+        <div class="bank-row"><span class="label en-text">Account Title</span><span class="label ur-text">اکاؤنٹ کا نام</span><span class="value">Sehhat Foundation Society</span></div>
+        <div class="bank-row"><span class="label en-text">Account Number</span><span class="label ur-text">اکاؤنٹ نمبر</span><span class="value">XXXX-XXXX-XXXX (Update this)</span></div>
+        <div class="bank-row"><span class="label en-text">Branch</span><span class="label ur-text">برانچ</span><span class="value en-text">Gilgit Main Branch</span><span class="value ur-text">گلگت مین برانچ</span></div>
+        <div class="bank-row"><span class="label">IBAN</span><span class="value">PK00XXXX0000000000000000</span></div>
+        <div class="bank-row"><span class="label">SWIFT</span><span class="value">MCBKPKKA</span></div>
+      </div>
+      <div class="bank-info reveal" style="margin-top:20px;">
+        <h3 class="en-text">🏦 HBL Bank — Secondary Account</h3>
+        <h3 class="ur-text" style="direction:rtl;">🏦 ایچ بی ایل بینک — ثانوی اکاؤنٹ</h3>
+        <div class="bank-row"><span class="label en-text">Account Title</span><span class="label ur-text">اکاؤنٹ کا نام</span><span class="value">Sehhat Foundation Society</span></div>
+        <div class="bank-row"><span class="label en-text">Account Number</span><span class="label ur-text">اکاؤنٹ نمبر</span><span class="value">XXXX-XXXX-XXXX (Update this)</span></div>
+        <div class="bank-row"><span class="label en-text">Branch</span><span class="label ur-text">برانچ</span><span class="value en-text">Gilgit Branch</span><span class="value ur-text">گلگت برانچ</span></div>
+        <div class="bank-row"><span class="label">IBAN</span><span class="value">PK00XXXX0000000000000000</span></div>
+      </div>
+      <div style="background:var(--gold-light);border:1px solid var(--gold);border-radius:14px;padding:18px 22px;margin-top:20px;font-size:13px;color:var(--green-dark);">
+        <strong class="en-text">📧 After donating, please email your transfer receipt to: donate@sehhatfoundation.org.pk — so we can acknowledge your donation and send you a certificate if needed.</strong>
+        <strong class="ur-text" style="direction:rtl;">📧 عطیہ کرنے کے بعد، اپنی ٹرانسفر رسید ای میل کریں: donate@sehhatfoundation.org.pk</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust -->
+  <section class="trust-section">
+    <div class="container">
+      <div class="section-tag" style="background:rgba(255,255,255,0.1);color:#a5d6a7;" class="en-text">Why Trust Us</div>
+      <div class="section-tag" style="background:rgba(255,255,255,0.1);color:#a5d6a7;" class="ur-text">ہم پر اعتماد کیوں</div>
+      <h2 class="section-title en-text" style="color:white;">Your Donation is Safe & Impactful</h2>
+      <h2 class="section-title ur-text" style="color:white;">آپ کا عطیہ محفوظ اور مؤثر ہے</h2>
+      <div class="trust-grid">
+        <div class="trust-item reveal"><div class="trust-icon">📋</div><h4 class="en-text">Registered NGO</h4><h4 class="ur-text" style="direction:rtl;">رجسٹرڈ این جی او</h4><p class="en-text">Formally registered with the Government of Gilgit-Baltistan since 2005.</p><p class="ur-text" style="direction:rtl;">2005 سے گلگت بلتستان حکومت کے ساتھ رجسٹرڈ۔</p></div>
+        <div class="trust-item reveal"><div class="trust-icon">🔒</div><h4 class="en-text">100% Transparency</h4><h4 class="ur-text" style="direction:rtl;">100% شفافیت</h4><p class="en-text">Full financial transparency — all donations go directly to healthcare services.</p><p class="ur-text" style="direction:rtl;">تمام عطیات براہ راست صحت خدمات میں جاتے ہیں۔</p></div>
+        <div class="trust-item reveal"><div class="trust-icon">📊</div><h4 class="en-text">Annual Reports</h4><h4 class="ur-text" style="direction:rtl;">سالانہ رپورٹس</h4><p class="en-text">We publish annual impact reports to show exactly how donations are used.</p><p class="ur-text" style="direction:rtl;">ہم سالانہ رپورٹ شائع کرتے ہیں کہ عطیات کیسے استعمال ہوتے ہیں۔</p></div>
+        <div class="trust-item reveal"><div class="trust-icon">❤️</div><h4 class="en-text">20+ Years Proven</h4><h4 class="ur-text" style="direction:rtl;">20+ سال ثابت شدہ</h4><p class="en-text">Over two decades of serving the communities of Gilgit-Baltistan with integrity.</p><p class="ur-text" style="direction:rtl;">دو دہائیوں سے زیادہ دیانت داری سے خدمت۔</p></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="logo-area" style="display:flex;margin-bottom:16px;"><div class="logo-icon">🏥</div><div class="logo-text"><div class="main">Sehhat Foundation</div><div class="sub">Since 2005 · Gilgit-Baltistan</div></div></a><p class="en-text">A registered NGO dedicated to quality healthcare in Gilgit-Baltistan.</p><p class="ur-text">گلگت بلتستان میں معیاری صحت کے لیے وقف این جی او۔</p><div class="footer-social"><a href="#" class="social-btn">📘</a><a href="#" class="social-btn">💬</a><a href="#" class="social-btn">📺</a><a href="#" class="social-btn">📷</a></div></div>
+      <div><h4 class="en-text">Quick Links</h4><h4 class="ur-text">فوری لنکس</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="hospital.html">Hospital</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="donate.html">Donate</a></li></ul></div>
+      <div><h4 class="en-text">Donate Via</h4><h4 class="ur-text">عطیہ کریں</h4><ul><li><a href="#">📱 JazzCash</a></li><li><a href="#">💚 EasyPaisa</a></li><li><a href="#">🏦 MCB Bank</a></li><li><a href="#">🏦 HBL Bank</a></li><li><a href="#">📧 donate@sehhatfoundation.org.pk</a></li></ul></div>
+      <div><h4 class="en-text">Contact</h4><h4 class="ur-text">رابطہ</h4><div class="footer-contact-item"><span class="icon">📍</span><span>Danyor, Gilgit-Baltistan</span></div><div class="footer-contact-item"><span class="icon">📞</span><span>+92-340-0114153</span></div><div class="footer-contact-item"><span class="icon">✉️</span><span>info@sehhatfoundation.org.pk</span></div></div>
+    </div>
+    <div class="footer-bottom"><span class="en-text">© 2025 Sehhat Foundation Society · All Rights Reserved</span><span class="ur-text">© 2025 سہت فاؤنڈیشن سوسائٹی</span></div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    let selectedAmount = '1000';
+    function selectAmount(btn, amount) {
+      document.querySelectorAll('.donate-amount').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      selectedAmount = amount;
+      document.getElementById('custom-amount').value = '';
+    }
+    function handleDonate(method) {
+      const custom = document.getElementById('custom-amount').value;
+      const amount = custom || selectedAmount;
+      const confirm = document.getElementById('donate-confirm');
+      confirm.style.display = 'block';
+      const lang = document.documentElement.getAttribute('lang');
+      if (lang === 'ur') {
+        confirm.innerHTML = `✅ شکریہ! آپ PKR ${parseInt(amount).toLocaleString()} ${method} کے ذریعے عطیہ دینا چاہتے ہیں۔<br>براہ کرم اوپر دی گئی ${method} تفصیل پر ادائیگی کریں اور رسید donate@sehhatfoundation.org.pk پر بھیجیں۔`;
+      } else {
+        confirm.innerHTML = `✅ Thank you! You are donating <strong>PKR ${parseInt(amount).toLocaleString()}</strong> via <strong>${method}</strong>.<br>Please complete the payment using the ${method} details above and email your receipt to <strong>donate@sehhatfoundation.org.pk</strong>`;
+      }
+      confirm.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    document.getElementById('custom-amount').addEventListener('input', function() {
+      if (this.value) document.querySelectorAll('.donate-amount').forEach(b => b.classList.remove('selected'));
+    });
+  </script>
+</body>
+</html>

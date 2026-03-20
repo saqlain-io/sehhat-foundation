@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — Sehhat Foundation</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 60px; align-items: start; }
+    .contact-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 28px; margin-bottom: 18px; display: flex; gap: 18px; align-items: flex-start; transition: all 0.3s; }
+    .contact-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: var(--green-light); }
+    .contact-card .cc-icon { width: 52px; height: 52px; background: var(--green-pale); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+    .contact-card .cc-title { font-size: 13px; font-weight: 800; color: var(--green-mid); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+    .contact-card .cc-val { font-size: 15px; font-weight: 600; color: var(--green-dark); margin-bottom: 3px; }
+    .contact-card .cc-sub { font-size: 12px; color: var(--text-gray); line-height: 1.5; }
+
+    .contact-form-wrap { background: white; border: 1px solid var(--border); border-radius: 24px; padding: 40px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label { font-size: 13px; font-weight: 700; color: var(--green-dark); }
+    .form-group input, .form-group select, .form-group textarea {
+      padding: 12px 14px; border: 1.5px solid var(--border); border-radius: 10px;
+      font-size: 14px; font-family: 'Nunito', sans-serif; color: var(--text-dark);
+      transition: border-color 0.2s; outline: none; background: #fafffe;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--green-mid); background: white; }
+    .form-group textarea { min-height: 110px; resize: vertical; }
+    .form-submit { background: var(--green-mid); color: white; border: none; padding: 14px 32px; border-radius: 25px; font-size: 15px; font-weight: 700; font-family: 'Nunito', sans-serif; cursor: pointer; transition: all 0.2s; margin-top: 8px; width: 100%; }
+    .form-submit:hover { background: var(--green-dark); }
+    .form-success { background: var(--green-pale); border: 1px solid var(--green-light); border-radius: 12px; padding: 14px 18px; font-size: 14px; color: var(--green-dark); font-weight: 600; display: none; margin-top: 12px; text-align: center; }
+
+    .volunteer-section { background: var(--green-dark); }
+    .vol-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .vol-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .vol-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 20px; text-align: center; }
+    .vol-card span { font-size: 28px; display: block; margin-bottom: 10px; }
+    .vol-card h4 { color: white; font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+    .vol-card p { color: rgba(255,255,255,0.6); font-size: 11px; line-height: 1.5; }
+
+    .social-section { background: var(--green-xpale); text-align: center; padding: 60px 40px; }
+    .social-big { display: flex; gap: 20px; justify-content: center; margin-top: 32px; flex-wrap: wrap; }
+    .social-big-btn { display: flex; align-items: center; gap: 10px; background: white; border: 1px solid var(--border); border-radius: 16px; padding: 16px 24px; text-decoration: none; color: var(--text-dark); font-weight: 700; font-size: 14px; transition: all 0.3s; }
+    .social-big-btn:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: var(--green-light); }
+    .social-big-btn span { font-size: 24px; }
+
+    @media(max-width:960px){.contact-grid,.vol-grid{grid-template-columns:1fr;}.vol-cards{grid-template-columns:repeat(2,1fr);}.form-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+  <div class="lang-bar">
+    <div class="lang-bar-left en-text">📞 Emergency: +92-340-0114153 &nbsp;|&nbsp; ✉️ info@sehhatfoundation.org.pk</div>
+    <div class="lang-bar-left ur-text">📞 ہنگامی: 340-0114153-92+</div>
+    <div class="lang-bar-right"><button class="lang-btn" data-lang="en" onclick="setLang('en')">English</button><button class="lang-btn" data-lang="ur" onclick="setLang('ur')">اردو</button></div>
+  </div>
+  <nav>
+    <a href="index.html" class="logo-area"><div class="logo-icon">🏥</div><div class="logo-text"><div class="main">Sehhat Foundation</div><div class="sub">Gilgit-Baltistan · Since 2005</div></div></a>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html" class="en-text">Home</a><a href="index.html" class="ur-text">ہوم</a>
+      <a href="about.html" class="en-text">About Us</a><a href="about.html" class="ur-text">ہمارے بارے میں</a>
+      <a href="services.html" class="en-text">Services</a><a href="services.html" class="ur-text">خدمات</a>
+      <a href="hospital.html" class="en-text">Hospital</a><a href="hospital.html" class="ur-text">ہسپتال</a>
+      <a href="gallery.html" class="en-text">Gallery</a><a href="gallery.html" class="ur-text">گیلری</a>
+      <a href="contact.html" class="en-text">Contact</a><a href="contact.html" class="ur-text">رابطہ</a>
+      <a href="donate.html" class="nav-donate en-text">❤️ Donate</a><a href="donate.html" class="nav-donate ur-text">❤️ عطیہ</a>
+    </div>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-hero-content fade-up">
+      <div class="page-hero-badge">✉️ <span class="en-text">Get in Touch</span><span class="ur-text">رابطہ کریں</span></div>
+      <h1 class="en-text">Contact <span>Sehhat Foundation</span></h1>
+      <h1 class="ur-text">سہت فاؤنڈیشن سے <span>رابطہ</span></h1>
+      <p class="en-text">Have a question, want to volunteer, or need to reach our hospital? We're here to help. Reach out to us anytime.</p>
+      <p class="ur-text" style="direction:rtl;">کوئی سوال ہو، رضاکار بننا چاہتے ہوں، یا ہسپتال تک پہنچنا ہو؟ ہم یہاں ہیں۔</p>
+    </div>
+  </div>
+
+  <!-- Contact Info + Form -->
+  <section style="background:var(--green-xpale);">
+    <div class="container contact-grid">
+      <div>
+        <div class="section-tag en-text">Our Contact Info</div>
+        <div class="section-tag ur-text">ہمارا رابطہ</div>
+        <h2 class="section-title en-text">We'd Love to Hear From You</h2>
+        <h2 class="section-title ur-text">آپ کا انتظار ہے</h2>
+        <p class="section-desc en-text" style="margin-bottom:28px;">Whether you're a patient, donor, volunteer, or partner — don't hesitate to reach out.</p>
+        <p class="section-desc ur-text" style="margin-bottom:28px;direction:rtl;">چاہے مریض ہوں، عطیہ دہندہ، رضاکار یا شریک — رابطہ کرنے میں مت ہچکچائیں۔</p>
+        <div class="contact-card reveal"><div class="cc-icon">📍</div><div><div class="cc-title en-text">Our Address</div><div class="cc-title ur-text">ہمارا پتہ</div><div class="cc-val en-text">Danyor Hospital, Near Chinese Graveyard</div><div class="cc-val ur-text" style="direction:rtl;">دانیور ہسپتال، چائنہ قبرستان کے قریب</div><div class="cc-sub en-text">Shahrah-e-Karakoram, Danyor, Gilgit-Baltistan, Pakistan</div><div class="cc-sub ur-text" style="direction:rtl;">شاہراہ قراقرم، دانیور، گلگت بلتستان، پاکستان</div></div></div>
+        <div class="contact-card reveal"><div class="cc-icon">📞</div><div><div class="cc-title en-text">Phone Numbers</div><div class="cc-title ur-text">فون نمبر</div><div class="cc-val">+92-340-0114153</div><div class="cc-sub en-text">Hospital: +92-340-0114153</div><div class="cc-sub en-text">Emergency (24/7): +92-340-0114153</div><div class="cc-sub ur-text" style="direction:rtl;">ہنگامی (24 گھنٹے): 000002-5811-92+</div></div></div>
+        <div class="contact-card reveal"><div class="cc-icon">✉️</div><div><div class="cc-title en-text">Email Addresses</div><div class="cc-title ur-text">ای میل</div><div class="cc-val">info@sehhatfoundation.org.pk</div><div class="cc-sub">hospital@sehhatfoundation.org.pk</div><div class="cc-sub">donate@sehhatfoundation.org.pk</div></div></div>
+        <div class="contact-card reveal"><div class="cc-icon">🕐</div><div><div class="cc-title en-text">Office Hours</div><div class="cc-title ur-text">دفتری اوقات</div><div class="cc-val en-text">Monday – Saturday</div><div class="cc-val ur-text" style="direction:rtl;">پیر تا ہفتہ</div><div class="cc-sub en-text">9:00 AM – 5:00 PM PKT | Emergency: 24/7</div><div class="cc-sub ur-text" style="direction:rtl;">صبح 9 تا شام 5 | ہنگامی: 24 گھنٹے</div></div></div>
+      </div>
+      <div class="contact-form-wrap reveal">
+        <h3 style="font-size:22px;font-weight:700;color:var(--green-dark);margin-bottom:6px;" class="en-text">Send Us a Message</h3>
+        <h3 style="font-size:22px;font-weight:700;color:var(--green-dark);margin-bottom:6px;direction:rtl;" class="ur-text">ہمیں پیغام بھیجیں</h3>
+        <p style="font-size:13px;color:var(--text-gray);margin-bottom:28px;" class="en-text">We respond within 24 hours during working days.</p>
+        <p style="font-size:13px;color:var(--text-gray);margin-bottom:28px;direction:rtl;" class="ur-text">ہم کاری دنوں میں 24 گھنٹے کے اندر جواب دیتے ہیں۔</p>
+        <form onsubmit="submitContact(event)">
+          <div class="form-grid">
+            <div class="form-group"><label class="en-text">Full Name *</label><label class="ur-text" style="direction:rtl;">پورا نام *</label><input type="text" placeholder="Your full name" required></div>
+            <div class="form-group"><label class="en-text">Phone Number</label><label class="ur-text" style="direction:rtl;">فون نمبر</label><input type="tel" placeholder="+92 300 0000000"></div>
+            <div class="form-group full"><label class="en-text">Email Address *</label><label class="ur-text" style="direction:rtl;">ای میل *</label><input type="email" placeholder="your@email.com" required></div>
+            <div class="form-group full"><label class="en-text">Subject / Reason for Contact</label><label class="ur-text" style="direction:rtl;">موضوع</label>
+              <select>
+                <option value="">Select a reason...</option>
+                <option>General Inquiry</option>
+                <option>Hospital Appointment</option>
+                <option>Donation / Fundraising</option>
+                <option>Volunteer Registration</option>
+                <option>Partnership / Collaboration</option>
+                <option>Media / Press</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group full"><label class="en-text">Your Message *</label><label class="ur-text" style="direction:rtl;">آپ کا پیغام *</label><textarea placeholder="Write your message here..." required></textarea></div>
+          </div>
+          <button type="submit" class="form-submit en-text">📨 Send Message</button>
+          <button type="submit" class="form-submit ur-text">📨 پیغام بھیجیں</button>
+          <div class="form-success" id="form-success">✅ <span class="en-text">Thank you! Your message has been sent. We'll get back to you within 24 hours.</span><span class="ur-text">شکریہ! آپ کا پیغام مل گیا۔ ہم 24 گھنٹے میں جواب دیں گے۔</span></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Volunteer -->
+  <section class="volunteer-section">
+    <div class="container vol-grid">
+      <div>
+        <div class="section-tag" style="background:rgba(255,255,255,0.1);color:#a5d6a7;" class="en-text">Volunteer With Us</div>
+        <div class="section-tag" style="background:rgba(255,255,255,0.1);color:#a5d6a7;" class="ur-text">رضاکار بنیں</div>
+        <h2 class="section-title en-text" style="color:white;">Give Your Time, Change Lives</h2>
+        <h2 class="section-title ur-text" style="color:white;">اپنا وقت دیں، زندگیاں بدلیں</h2>
+        <p style="color:rgba(255,255,255,0.75);font-size:15px;line-height:1.75;margin-bottom:24px;" class="en-text">We welcome doctors, nurses, healthcare educators, IT professionals, and community workers who want to contribute to the health of Gilgit-Baltistan's communities.</p>
+        <p style="color:rgba(255,255,255,0.75);font-size:15px;line-height:1.75;margin-bottom:24px;direction:rtl;" class="ur-text">ہم ڈاکٹروں، نرسوں، صحت تعلیم دہندگان، آئی ٹی پیشہ وروں اور کمیونٹی کارکنوں کا خیرمقدم کرتے ہیں۔</p>
+        <a href="mailto:volunteer@sehhatfoundation.org.pk" class="btn-gold en-text">🙋 Register as Volunteer</a>
+        <a href="mailto:volunteer@sehhatfoundation.org.pk" class="btn-gold ur-text">🙋 رضاکار کے طور پر رجسٹر کریں</a>
+      </div>
+      <div class="vol-cards">
+        <div class="vol-card"><span>👨‍⚕️</span><h4 class="en-text">Doctors</h4><h4 class="ur-text">ڈاکٹر</h4><p class="en-text">Medical professionals for OPD and camps</p><p class="ur-text" style="direction:rtl;">او پی ڈی اور کیمپ کے لیے</p></div>
+        <div class="vol-card"><span>👩‍⚕️</span><h4 class="en-text">Nurses</h4><h4 class="ur-text">نرسیں</h4><p class="en-text">Nursing support and training</p><p class="ur-text" style="direction:rtl;">نرسنگ مدد اور تربیت</p></div>
+        <div class="vol-card"><span>📚</span><h4 class="en-text">Educators</h4><h4 class="ur-text">تعلیم دہندگان</h4><p class="en-text">Health awareness and education programs</p><p class="ur-text" style="direction:rtl;">صحت آگاہی پروگرام</p></div>
+        <div class="vol-card"><span>💻</span><h4 class="en-text">IT & Admin</h4><h4 class="ur-text">آئی ٹی اور انتظامیہ</h4><p class="en-text">Technology and administrative support</p><p class="ur-text" style="direction:rtl;">ٹیکنالوجی اور انتظامی مدد</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Media -->
+  <section class="social-section">
+    <div class="container">
+      <div class="section-tag en-text">Follow Us</div>
+      <div class="section-tag ur-text">ہمیں فالو کریں</div>
+      <h2 class="section-title en-text">Stay Connected with Sehhat Foundation</h2>
+      <h2 class="section-title ur-text">سہت فاؤنڈیشن سے جڑے رہیں</h2>
+      <p class="section-desc en-text" style="margin:0 auto 12px;">Follow us on social media to stay updated on our programs, health camps, and community work.</p>
+      <p class="section-desc ur-text" style="direction:rtl;margin:0 auto 12px;">ہمارے پروگرام، صحت کیمپ اور کمیونٹی کام کی خبروں کے لیے سوشل میڈیا پر فالو کریں۔</p>
+      <div class="social-big">
+        <a href="#" class="social-big-btn"><span>📘</span> Facebook</a>
+        <a href="#" class="social-big-btn"><span>📷</span> Instagram</a>
+        <a href="#" class="social-big-btn"><span>💬</span> WhatsApp</a>
+        <a href="#" class="social-big-btn"><span>📺</span> YouTube</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="logo-area" style="display:flex;margin-bottom:16px;"><div class="logo-icon">🏥</div><div class="logo-text"><div class="main">Sehhat Foundation</div><div class="sub">Since 2005 · Gilgit-Baltistan</div></div></a><p class="en-text">A registered NGO dedicated to quality healthcare in Gilgit-Baltistan.</p><p class="ur-text">گلگت بلتستان میں معیاری صحت کے لیے وقف این جی او۔</p><div class="footer-social"><a href="#" class="social-btn">📘</a><a href="#" class="social-btn">💬</a><a href="#" class="social-btn">📺</a><a href="#" class="social-btn">📷</a></div></div>
+      <div><h4 class="en-text">Quick Links</h4><h4 class="ur-text">فوری لنکس</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="hospital.html">Hospital</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="donate.html">Donate</a></li></ul></div>
+      <div><h4 class="en-text">Services</h4><h4 class="ur-text">خدمات</h4><ul><li><a href="services.html">General Health</a></li><li><a href="services.html">Maternal & Child</a></li><li><a href="services.html">Health Education</a></li><li><a href="services.html">Nursing Training</a></li></ul></div>
+      <div><h4 class="en-text">Contact</h4><h4 class="ur-text">رابطہ</h4><div class="footer-contact-item"><span class="icon">📍</span><span>Danyor, Gilgit-Baltistan</span></div><div class="footer-contact-item"><span class="icon">📞</span><span>+92-340-0114153</span></div><div class="footer-contact-item"><span class="icon">✉️</span><span>info@sehhatfoundation.org.pk</span></div></div>
+    </div>
+    <div class="footer-bottom"><span class="en-text">© 2025 Sehhat Foundation Society · All Rights Reserved</span><span class="ur-text">© 2025 سہت فاؤنڈیشن سوسائٹی</span></div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

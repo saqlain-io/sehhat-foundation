@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — Sehhat Foundation</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .timeline { position: relative; padding-left: 40px; margin-top: 40px; }
+    .timeline::before { content: ''; position: absolute; left: 16px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--green-mid), var(--green-light)); }
+    .tl-item { position: relative; margin-bottom: 36px; }
+    .tl-dot { position: absolute; left: -32px; top: 4px; width: 18px; height: 18px; background: var(--green-mid); border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 3px var(--green-light); }
+    .tl-year { font-size: 12px; font-weight: 800; color: var(--green-mid); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
+    .tl-title { font-size: 16px; font-weight: 700; color: var(--green-dark); margin-bottom: 4px; }
+    .tl-desc { font-size: 13px; color: var(--text-gray); line-height: 1.6; }
+
+    .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+    .team-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 30px 24px; text-align: center; transition: all 0.3s; }
+    .team-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .team-avatar { width: 80px; height: 80px; background: var(--green-pale); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 36px; margin: 0 auto 16px; }
+    .team-name { font-size: 16px; font-weight: 700; color: var(--green-dark); margin-bottom: 4px; }
+    .team-role { font-size: 12px; color: var(--green-mid); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+    .team-desc { font-size: 13px; color: var(--text-gray); line-height: 1.6; }
+
+    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+    .value-card { background: var(--green-pale); border-radius: 20px; padding: 28px; }
+    .value-icon { font-size: 36px; margin-bottom: 14px; display: block; }
+    .value-card h3 { font-size: 17px; font-weight: 700; color: var(--green-dark); margin-bottom: 8px; }
+    .value-card p { font-size: 13px; color: var(--text-gray); line-height: 1.6; }
+
+    .about-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .big-quote { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--green-dark); line-height: 1.5; border-left: 4px solid var(--green-mid); padding-left: 24px; margin: 28px 0; }
+    .big-quote.ur { border-left: none; border-right: 4px solid var(--green-mid); padding-left: 0; padding-right: 24px; direction: rtl; }
+
+    @media(max-width:960px){.about-intro,.team-grid,.values-grid{grid-template-columns:1fr;}}
+    @media(max-width:700px){.team-grid{grid-template-columns:repeat(2,1fr);}}
+  </style>
+</head>
+<body>
+  <div class="lang-bar">
+    <div class="lang-bar-left en-text">📞 Emergency: +92-340-0114153 &nbsp;|&nbsp; ✉️ info@sehhatfoundation.org.pk</div>
+    <div class="lang-bar-left ur-text">📞 ہنگامی: 340-0114153-92+</div>
+    <div class="lang-bar-right"><button class="lang-btn" data-lang="en" onclick="setLang('en')">English</button><button class="lang-btn" data-lang="ur" onclick="setLang('ur')">اردو</button></div>
+  </div>
+  <nav>
+    <a href="index.html" class="logo-area"><div class="logo-icon">🏥</div><div class="logo-text"><div class="main">Sehhat Foundation</div><div class="sub">Gilgit-Baltistan · Since 2005</div></div></a>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html" class="en-text">Home</a><a href="index.html" class="ur-text">ہوم</a>
+      <a href="about.html" class="en-text">About Us</a><a href="about.html" class="ur-text">ہمارے بارے میں</a>
+      <a href="services.html" class="en-text">Services</a><a href="services.html" class="ur-text">خدمات</a>
+      <a href="hospital.html" class="en-text">Hospital</a><a href="hospital.html" class="ur-text">ہسپتال</a>
+      <a href="gallery.html" class="en-text">Gallery</a><a href="gallery.html" class="ur-text">گیلری</a>
+      <a href="contact.html" class="en-text">Contact</a><a href="contact.html" class="ur-text">رابطہ</a>
+      <a href="donate.html" class="nav-donate en-text">❤️ Donate</a><a href="donate.html" class="nav-donate ur-text">❤️ عطیہ</a>
+    </div>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </nav>
+
+  <!-- Page Hero -->
+  <div class="page-hero">
+    <div class="page-hero-content fade-up">
+      <div class="page-hero-badge">📖 <span class="en-text">Our Story</span><span class="ur-text">ہماری کہانی</span></div>
+      <h1 class="en-text">About <span>Sehhat Foundation</span></h1>
+      <h1 class="ur-text">سہت فاؤنڈیشن کے <span>بارے میں</span></h1>
+      <p class="en-text">Learn about our 20+ year journey of providing compassionate healthcare to the communities of Gilgit-Baltistan.</p>
+      <p class="ur-text">گلگت بلتستان کی کمیونٹی کو 20 سال سے زیادہ صحت خدمات فراہم کرنے کے ہمارے سفر کے بارے میں جانیں۔</p>
+    </div>
+  </div>
+
+  <!-- About Intro -->
+  <section style="background:var(--green-xpale);">
+    <div class="container about-intro">
+      <div class="reveal">
+        <div class="section-tag en-text">Who We Are</div>
+        <div class="section-tag ur-text">ہم کون ہیں</div>
+        <h2 class="section-title en-text">A Foundation Built on Compassion</h2>
+        <h2 class="section-title ur-text">ہمدردی پر بنی فاؤنڈیشن</h2>
+        <p class="section-desc en-text">Sehhat Foundation Society is a registered non-governmental organization operating in Gilgit-Baltistan, Pakistan. Since our establishment in 2005, we have been committed to one simple but powerful goal: making quality healthcare accessible to everyone, regardless of their socioeconomic status.</p>
+        <p class="section-desc ur-text">سہت فاؤنڈیشن سوسائٹی گلگت بلتستان، پاکستان میں کام کرنے والی ایک رجسٹرڈ غیر سرکاری تنظیم ہے۔ 2005 میں قیام سے ہم ایک سادہ مگر طاقتور ہدف کے لیے وقف ہیں: معیاری صحت کی سہولت سب کو دستیاب کرانا۔</p>
+        <blockquote class="big-quote en-text">"Health is not a privilege — it is a fundamental right for every person in Gilgit-Baltistan."</blockquote>
+        <blockquote class="big-quote ur">"صحت کوئی امتیاز نہیں — یہ گلگت بلتستان کے ہر انسان کا بنیادی حق ہے۔"</blockquote>
+      </div>
+      <div class="reveal">
+        <div style="background:linear-gradient(135deg,var(--green-mid),var(--green-dark));border-radius:28px;padding:40px;color:white;">
+          <h3 style="font-family:'Playfair Display',serif;font-size:24px;margin-bottom:20px;" class="en-text">Key Facts</h3>
+          <h3 style="font-family:'Playfair Display',serif;font-size:24px;margin-bottom:20px;direction:rtl;" class="ur-text">اہم حقائق</h3>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div style="display:flex;gap:14px;align-items:center;background:rgba(255,255,255,0.08);border-radius:12px;padding:14px;">
+              <span style="font-size:22px;">📅</span><div><div style="color:white;font-weight:700;font-size:14px;" class="en-text">Founded</div><div style="color:white;font-weight:700;font-size:14px;direction:rtl;" class="ur-text">قیام</div><div style="color:rgba(255,255,255,0.65);font-size:13px;">2005</div></div>
+            </div>
+            <div style="display:flex;gap:14px;align-items:center;background:rgba(255,255,255,0.08);border-radius:12px;padding:14px;">
+              <span style="font-size:22px;">🏥</span><div><div style="color:white;font-weight:700;font-size:14px;" class="en-text">Hospital Established</div><div style="color:white;font-weight:700;font-size:14px;direction:rtl;" class="ur-text">ہسپتال قیام</div><div style="color:rgba(255,255,255,0.65);font-size:13px;">2010 — Danyor, Gilgit</div></div>
+            </div>
+            <div style="display:flex;gap:14px;align-items:center;background:rgba(255,255,255,0.08);border-radius:12px;padding:14px;">
+              <span style="font-size:22px;">📋</span><div><div style="color:white;font-weight:700;font-size:14px;" class="en-text">Registration</div><div style="color:white;font-weight:700;font-size:14px;direction:rtl;" class="ur-text">رجسٹریشن</div><div style="color:rgba(255,255,255,0.65);font-size:13px;" class="en-text">Registered NGO — Gilgit-Baltistan</div><div style="color:rgba(255,255,255,0.65);font-size:13px;direction:rtl;" class="ur-text">رجسٹرڈ این جی او</div></div>
+            </div>
+            <div style="display:flex;gap:14px;align-items:center;background:rgba(255,255,255,0.08);border-radius:12px;padding:14px;">
+              <span style="font-size:22px;">🌍</span><div><div style="color:white;font-weight:700;font-size:14px;" class="en-text">Area Served</div><div style="color:white;font-weight:700;font-size:14px;direction:rtl;" class="ur-text">خدمت کا علاقہ</div><div style="color:rgba(255,255,255,0.65);font-size:13px;">Gilgit, Hunza-Nagar, Sakwar, Jaglot</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission Vision Values -->
+  <section style="background:white;">
+    <div class="container">
+      <div class="section-tag en-text">Our Foundation</div>
+      <div class="section-tag ur-text">ہماری بنیاد</div>
+      <h2 class="section-title en-text">Mission, Vision & Values</h2>
+      <h2 class="section-title ur-text">مشن، وژن اور اقدار</h2>
+      <div class="values-grid">
+        <div class="value-card reveal">
+          <span class="value-icon">🎯</span>
+          <h3 class="en-text">Our Mission</h3><h3 class="ur-text">ہمارا مشن</h3>
+          <p class="en-text">To provide accessible, affordable, and quality healthcare services to all people of Gilgit-Baltistan, with a special focus on the most vulnerable — women, children, and those in remote areas.</p>
+          <p class="ur-text">گلگit بلتستان کے سب لوگوں کو، خاص طور پر خواتین، بچوں اور دور دراز علاقوں کے لوگوں کو سستی اور معیاری صحت سہولت فراہم کرنا۔</p>
+        </div>
+        <div class="value-card reveal" style="background:var(--green-pale);">
+          <span class="value-icon">👁️</span>
+          <h3 class="en-text">Our Vision</h3><h3 class="ur-text">ہمارا وژن</h3>
+          <p class="en-text">A healthy, empowered community in Gilgit-Baltistan where every person has access to quality healthcare, zero preventable deaths occur, and communities thrive with dignity.</p>
+          <p class="ur-text">گلگت بلتستان میں ایک صحت مند اور با اختیار کمیونٹی جہاں ہر شخص کو معیاری صحت کی سہولت میسر ہو اور قابل علاج اموات صفر ہوں۔</p>
+        </div>
+        <div class="value-card reveal">
+          <span class="value-icon">💚</span>
+          <h3 class="en-text">Our Values</h3><h3 class="ur-text">ہماری اقدار</h3>
+          <p class="en-text">Compassion, integrity, inclusivity, transparency, and community ownership. We serve everyone regardless of caste, creed, or color — because health knows no boundaries.</p>
+          <p class="ur-text">ہمدردی، دیانت داری، شمولیت، شفافیت اور کمیونٹی ملکیت۔ ہم بلا امتیاز سب کی خدمت کرتے ہیں۔</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section style="background:var(--green-xpale);">
+    <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;">
+      <div>
+        <div class="section-tag en-text">Our Journey</div>
+        <div class="section-tag ur-text">ہمارا سفر</div>
+        <h2 class="section-title en-text">20 Years of Serving GB</h2>
+        <h2 class="section-title ur-text">20 سال گلگت بلتستان کی خدمت</h2>
+        <p class="section-desc en-text">From a small community initiative to a fully registered hospital and NGO, our journey has been one of dedication and growth.</p>
+        <p class="section-desc ur-text">ایک چھوٹی کمیونٹی پہل سے لے کر مکمل رجسٹرڈ ہسپتال اور این جی او تک، ہمارا سفر لگن اور ترقی کا سفر ہے۔</p>
+        <div style="margin-top:28px;"><a href="contact.html" class="btn-primary en-text">Join Our Mission</a><a href="contact.html" class="btn-primary ur-text">ہمارے مشن میں شامل ہوں</a></div>
+      </div>
+      <div class="timeline reveal">
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2005</div><div class="tl-title en-text">Foundation Established</div><div class="tl-title ur-text">فاؤنڈیشن قائم</div><div class="tl-desc en-text">Sehhat Foundation Society registered as an NGO in Gilgit-Baltistan with a focus on community health.</div><div class="tl-desc ur-text">سہت فاؤنڈیشن سوسائٹی گلگت بلتستان میں رجسٹرڈ ہوئی۔</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2007</div><div class="tl-title en-text">First Health Camps</div><div class="tl-title ur-text">پہلے صحت کیمپ</div><div class="tl-desc en-text">Launched community health camps across remote villages of Gilgit-Baltistan.</div><div class="tl-desc ur-text">گلگت بلتستان کے دور دراز گاؤوں میں صحت کیمپ شروع کیے۔</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2009</div><div class="tl-title en-text">Maternal Health Program</div><div class="tl-title ur-text">زچہ صحت پروگرام</div><div class="tl-desc en-text">Dedicated maternal and child health program launched to reduce maternal mortality.</div><div class="tl-desc ur-text">زچہ اموات کم کرنے کے لیے خصوصی پروگرام شروع کیا۔</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2010</div><div class="tl-title en-text">Danyor Hospital Opens</div><div class="tl-title ur-text">دانیور ہسپتال افتتاح</div><div class="tl-desc en-text">Opened our flagship Danyor Hospital on Shahrah-e-Karakoram, serving thousands annually.</div><div class="tl-desc ur-text">شاہراہ قراقرم پر دانیور ہسپتال کا افتتاح، ہزاروں مریضوں کی خدمت۔</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2015</div><div class="tl-title en-text">Nursing Training Program</div><div class="tl-title ur-text">نرسنگ تربیتی پروگرام</div><div class="tl-desc en-text">Launched nursing training to build local healthcare workforce in GB.</div><div class="tl-desc ur-text">مقامی صحت افرادی قوت بنانے کے لیے نرسنگ تربیت شروع کی۔</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2025</div><div class="tl-title en-text">20 Years & Growing</div><div class="tl-title ur-text">20 سال اور آگے</div><div class="tl-desc en-text">Celebrating 20+ years of service with 50,000+ patients and expanding programs.</div><div class="tl-desc ur-text">50,000 سے زیادہ مریضوں کے ساتھ 20 سال کا جشن اور پروگرام کی توسیع۔</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section style="background:white;">
+    <div class="container">
+      <div class="section-tag en-text">Our Team</div>
+      <div class="section-tag ur-text">ہماری ٹیم</div>
+      <h2 class="section-title en-text">The People Behind Sehhat Foundation</h2>
+      <h2 class="section-title ur-text">سہت فاؤنڈیشن کے پیچھے لوگ</h2>
+      <div class="team-grid">
+        <div class="team-card reveal"><div class="team-avatar">👨‍💼</div><div class="team-name en-text">Founder / Chairman</div><div class="team-name ur-text" style="direction:rtl;">بانی / چیئرمین</div><div class="team-role en-text">Leadership</div><div class="team-role ur-text">قیادت</div><div class="team-desc en-text">Visionary leader who founded Sehhat Foundation in 2005 with a mission to bring healthcare to GB.</div><div class="team-desc ur-text" style="direction:rtl;">2005 میں سہت فاؤنڈیشن کے بانی جنہوں نے گلگت بلتستان میں صحت کا خواب دیکھا۔</div></div>
+        <div class="team-card reveal"><div class="team-avatar">👩‍⚕️</div><div class="team-name en-text">Medical Director</div><div class="team-name ur-text" style="direction:rtl;">طبی ڈائریکٹر</div><div class="team-role en-text">Medical Leadership</div><div class="team-role ur-text">طبی قیادت</div><div class="team-desc en-text">Leading our clinical operations and ensuring the highest standards of patient care at Danyor Hospital.</div><div class="team-desc ur-text" style="direction:rtl;">دانیور ہسپتال میں طبی کارروائیوں کی نگرانی اور مریضوں کی بہترین دیکھ بھال۔</div></div>
+        <div class="team-card reveal"><div class="team-avatar">👨‍💻</div><div class="team-name en-text">IT Manager</div><div class="team-name ur-text" style="direction:rtl;">آئی ٹی مینیجر</div><div class="team-role en-text">Technology & Digital</div><div class="team-role ur-text">ٹیکنالوجی</div><div class="team-desc en-text">Managing technology infrastructure and digital presence for Sehhat Foundation's operations.</div><div class="team-desc ur-text" style="direction:rtl;">سہت فاؤنڈیشن کی ٹیکنالوجی اور ڈیجیٹل موجودگی کی نگرانی۔</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="logo-area" style="display:flex;margin-bottom:16px;"><div class="logo-icon">🏥</div><div class="logo-text"><div class="main">Sehhat Foundation</div><div class="sub">Since 2005 · Gilgit-Baltistan</div></div></a><p class="en-text">A registered NGO dedicated to quality healthcare in Gilgit-Baltistan.</p><p class="ur-text">گلگت بلتستان میں معیاری صحت کے لیے وقف رجسٹرڈ این جی او۔</p><div class="footer-social"><a href="#" class="social-btn">📘</a><a href="#" class="social-btn">💬</a><a href="#" class="social-btn">📺</a><a href="#" class="social-btn">📷</a></div></div>
+      <div><h4 class="en-text">Quick Links</h4><h4 class="ur-text">فوری لنکس</h4><ul><li><a href="index.html">Home / ہوم</a></li><li><a href="about.html">About / ہمارے بارے</a></li><li><a href="services.html">Services / خدمات</a></li><li><a href="hospital.html">Hospital / ہسپتال</a></li><li><a href="gallery.html">Gallery / گیلری</a></li><li><a href="donate.html">Donate / عطیہ</a></li></ul></div>
+      <div><h4 class="en-text">Programs</h4><h4 class="ur-text">پروگرام</h4><ul><li><a href="services.html">General Health</a></li><li><a href="services.html">Maternal & Child</a></li><li><a href="services.html">Health Education</a></li><li><a href="services.html">Nursing Training</a></li></ul></div>
+      <div><h4 class="en-text">Contact</h4><h4 class="ur-text">رابطہ</h4><div class="footer-contact-item"><span class="icon">📍</span><span>Danyor, Gilgit-Baltistan</span></div><div class="footer-contact-item"><span class="icon">📞</span><span>+92-340-0114153</span></div><div class="footer-contact-item"><span class="icon">✉️</span><span>info@sehhatfoundation.org.pk</span></div></div>
+    </div>
+    <div class="footer-bottom"><span class="en-text">© 2025 Sehhat Foundation Society · All Rights Reserved</span><span class="ur-text">© 2025 سہت فاؤنڈیشن سوسائٹی</span></div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
